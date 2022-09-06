@@ -14,29 +14,28 @@ function divide(num1,num2){
 
 //Function to select specific operator function
 function operate(num1, num2, operator){
-    console.log(`Number1->${num1}. Num2->${num2}. Operator->${operator}`)
     switch (operator) {
         case "+":
-            console.log("ADD CASE REACHED");
             return(add(num1, num2));
 
         case "-":
-            console.log("SUBTRACT CASE REACHED");
             return(subtract(num1, num2));
 
         case "*":
-            console.log("MULTIPLY CASE REACHED");
             return(multiply(num1, num2));
 
         case "/":
-            console.log("DIVIDE CASE REACHED");
             return(divide(num1, num2));
-
         
+        case "":
+            console.log("NO OPERATOR FOUND --------------");
+            return "You didnt enter an operator";
     }
 }
 
+//Global array to hold order of user input
 let calculatorValues = [];
+
 //Click number functions:
 function click1(){
     const input = document.getElementById("itemInputOutputItem2");
@@ -79,62 +78,67 @@ function click0(){
     input.innerText += 0;
 }
 
-//Click pperator functions:
+//Click operator functions:
 function clickAdd(){
     const input = document.getElementById("itemInputOutputItem2");
     //If user hasnt entered any numbers, dont do anything
     if (input.innerText != "") {
+        //Add associated userinput into global array
         calculatorValues.push(parseInt(input.innerText));
         calculatorValues.push("+");
+        //Update latest calculation to calculator ui
         const calculation = document.getElementById("itemInputOutputItem1");
-        calculation.innerText += input.innerText;
-        calculation.innerText += "+";
+        calculation.innerText += input.innerText + "+";
+        //Reset user input area for more input
         input.innerText = "";
-        console.log(calculatorValues);
     }
 }
 function clickSubtract(){
     const input = document.getElementById("itemInputOutputItem2");
     //If user hasnt entered any numbers, dont do anything
     if (input.innerText != "") {
+        //Add associated userinput into global array
         calculatorValues.push(parseInt(input.innerText));
         calculatorValues.push("-");
+        //Update latest calculation to calculator ui
         const calculation = document.getElementById("itemInputOutputItem1");
-        calculation.innerText += input.innerText;
-        calculation.innerText += "-";
+        calculation.innerText += input.innerText + "-";
+        //Reset user input area for more input
         input.innerText = "";
-        console.log(calculatorValues); 
     }   
 }
 function clickMultiply(){
     const input = document.getElementById("itemInputOutputItem2");
     //If user hasnt entered any numbers, dont do anything
     if (input.innerText != "") {
+        //Add associated userinput into global array
         calculatorValues.push(parseInt(input.innerText));
         calculatorValues.push("*");
+        //Update latest calculation to calculator ui
         const calculation = document.getElementById("itemInputOutputItem1");
-        calculation.innerText += input.innerText;
-        calculation.innerText += "*";
+        calculation.innerText += input.innerText + "*";
+        //Reset user input area for more input
         input.innerText = "";
-        console.log(calculatorValues);  
     }
 }
 function clickDivide(){
     const input = document.getElementById("itemInputOutputItem2");
     //If user hasnt entered any numbers, dont do anything
     if (input.innerText != "") {
+        //Add associated userinput into global array
         calculatorValues.push(parseInt(input.innerText));
         calculatorValues.push("/");
+        //Update latest calculation to calculator ui
         const calculation = document.getElementById("itemInputOutputItem1");
-        calculation.innerText += input.innerText;
-        calculation.innerText += "/";
+        calculation.innerText += input.innerText + "/";
+        //Reset user input area for more input
         input.innerText = "";
-        console.log(calculatorValues);  
     } 
 }
 
 //Clear and equals functions:
 function clickClear(){
+    //Reset all relevent values.
     const input = document.getElementById("itemInputOutputItem2");
     const calculation = document.getElementById("itemInputOutputItem1");
     input.innerHTML = "";
@@ -145,34 +149,31 @@ function clickEquals(){
     const input = document.getElementById("itemInputOutputItem2");
     //If user hasnt entered any numbers, dont do anything
     if (input.innerText != "") {
+        //Add associated userinput into global array
         calculatorValues.push(parseInt(input.innerText));
+        //Update latest calculation to calculator ui
+        const calculation = document.getElementById("itemInputOutputItem1");
+        calculation.innerText += input.innerText + "=";
+        //DO THE CALCULATIONS AND SET INNER HTML
         input.innerText = doCalculation();
-
-
     }
-    //console.log(calculatorValues);
 }
 function doCalculation(){
     let count = 0;
-    let newArr;
     let result;
-    console.log("#########DEBUG##############")
-    console.log("");
-    while (calculatorValues.length != 0) {
-        console.log(calculatorValues);
+    //When calculator array === 0 -> exit loop
+    while (calculatorValues.length !== 0) {
+        //The first iteration takes information from the array only, therefore we splice 3 values off.
+        //The rest of the iterations will take values from the array and from result variable, therefore we splice 2 values off.
         if (count === 0) {
             count +=1;
-            newArr = calculatorValues.splice(0,3);
+            let newArr = calculatorValues.splice(0,3);
             result = operate(newArr[0], newArr[2], newArr[1]);
         }
         else{
-            newArr = calculatorValues.splice(0,2);
+            let newArr = calculatorValues.splice(0,2);
             result = operate(result,newArr[1],newArr[0]);
         }
-        console.log(calculatorValues);
-        console.log(newArr);
-        console.log(result);
-        //let debug = prompt("debug");
     }
     return(result);
 }
