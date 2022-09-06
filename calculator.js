@@ -9,6 +9,11 @@ function multiply(num1,num2){
     return(num1 * num2);
 }
 function divide(num1,num2){
+    //SNARKY infinity comment!
+    if (num2 == 0) {
+      alert("Infinity is that which is boundless, endless, or larger than any natural number. It is often denoted by the infinity symbol.");
+      return "WOW INFINITY";
+    }
     return(num1 / num2);
 }
 
@@ -148,7 +153,13 @@ function clickClear(){
 function clickEquals(){
     const input = document.getElementById("itemInputOutputItem2");
     //If user hasnt entered any numbers, dont do anything
-    if (input.innerText != "") {
+    console.log("DEBUGGING");
+    
+    //Only execute code when calculator has values and inner text has values.
+    //This stops equals sign being clicked after it has already been clicked.
+    if (input.innerText != "" && calculatorValues.length !== 0) {
+             
+        console.log("####reached####")
         //Add associated userinput into global array
         calculatorValues.push(parseInt(input.innerText));
         //Update latest calculation to calculator ui
@@ -156,6 +167,7 @@ function clickEquals(){
         calculation.innerText += input.innerText + "=";
         //DO THE CALCULATIONS AND SET INNER HTML
         input.innerText = doCalculation();
+          
     }
 }
 function doCalculation(){
