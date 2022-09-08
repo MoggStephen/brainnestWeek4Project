@@ -30,7 +30,7 @@
 }
 #itemInputOutput{
     width: 100%;
-    height: 80px;
+    height: 100px;
     text-align: right;
     display: flex;
     flex-direction: column;
@@ -62,7 +62,11 @@
 /*EQUALS*/
 #itemEquals{
     background-color: var(--btn-equals-color); 
+    width: 270px;
 }
 #item0{
     width: 130px;
+}
+.btnDisabled{
+    background-color: rgba(250, 250, 210, 0.5);
 }

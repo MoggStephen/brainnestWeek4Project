@@ -87,6 +87,15 @@ function click0(){
     const input = document.getElementById("itemInputOutputItem2");
     input.innerText += 0;
 }
+function clickDecimal(){
+    const input = document.getElementById("itemInputOutputItem2");
+    if(!input.innerText.includes('.')){
+        input.innerText += '.';
+        const btn = document.getElementById("itemDecimal");
+        btn.setAttribute("disabled", true);
+        btn.classList.add("btnDisabled");
+    }
+}
 
 //Click operator functions:
 function clickAdd(){
@@ -101,6 +110,8 @@ function clickAdd(){
         calculation.innerText += input.innerText + "+";
         //Reset user input area for more input
         input.innerText = "";
+        //Enable decimal button
+        btnDecimalEnable() 
     }
 }
 function clickSubtract(){
@@ -115,6 +126,8 @@ function clickSubtract(){
         calculation.innerText += input.innerText + "-";
         //Reset user input area for more input
         input.innerText = "";
+        //Enable decimal button
+        btnDecimalEnable() 
     }   
 }
 function clickMultiply(){
@@ -129,6 +142,8 @@ function clickMultiply(){
         calculation.innerText += input.innerText + "*";
         //Reset user input area for more input
         input.innerText = "";
+        //Enable decimal button
+        btnDecimalEnable() 
     }
 }
 function clickDivide(){
@@ -143,6 +158,8 @@ function clickDivide(){
         calculation.innerText += input.innerText + "/";
         //Reset user input area for more input
         input.innerText = "";
+        //Enable decimal button
+        btnDecimalEnable() 
     } 
 }
 function clickPercentage(){
@@ -157,6 +174,8 @@ function clickPercentage(){
         calculation.innerText += input.innerText + "%";
         //Reset user input area for more input
         input.innerText = "";
+        //Enable decimal button
+        btnDecimalEnable() 
     }
 }
 
@@ -165,15 +184,11 @@ function clickClear(){
     //Reset all relevent values.
     const input = document.getElementById("itemInputOutputItem2");
     const calculation = document.getElementById("itemInputOutputItem1");
-    input.innerHTML = "";
-    calculation.innerHTML = "";
+    input.innerText = "";
+    calculation.innerText = "";
     calculatorValues = [];
-}
-function clickDecimal(){
-    const input = document.getElementById("itemInputOutputItem2");
-    if(!input.innerText.includes('.')){
-        input.innerText += '.';
-    }
+    //Enable decimal button
+    btnDecimalEnable() 
 }
 function clickPositiveNegative(){
     const input = document.getElementById("itemInputOutputItem2");
@@ -185,13 +200,17 @@ function clickPositiveNegative(){
         input.innerText = "-" + input.innerText;
     }
 }
+function clickBackspace(){
+    const input = document.getElementById("itemInputOutputItem2");
+    input.innerText = input.innerText.slice(0, -1);
+}
 
 //EQUALS FUNCTION
 function clickEquals(){
     const input = document.getElementById("itemInputOutputItem2");
     //If user hasnt entered any numbers, dont do anything   
     //Only execute code when calculator has values and inner text has values.
-    //This stops equals sign being clicked after it has already been clicked.
+    //This stops equals sign being clicked repeatedly.
     if (input.innerText != "" && calculatorValues.length !== 0) {
 
         //Add associated userinput into global array
@@ -199,8 +218,10 @@ function clickEquals(){
         //Update latest calculation to calculator ui
         const calculation = document.getElementById("itemInputOutputItem1");
         calculation.innerText += input.innerText + "=";
-        //DO THE CALCULATIONS AND SET INNER HTML
-        input.innerText = doCalculation();  
+        //DO THE CALCULATIONS AND SET INNER text
+        input.innerText = doCalculation(); 
+        //Enable decimal button
+        btnDecimalEnable() 
     }
 }
 function doCalculation(){
@@ -221,4 +242,10 @@ function doCalculation(){
         }
     }
     return(result);
+}
+
+function btnDecimalEnable(){
+    const btn = document.getElementById("itemDecimal");
+    btn.removeAttribute("disabled", true);
+    btn.classList.remove("btnDisabled");
 }
