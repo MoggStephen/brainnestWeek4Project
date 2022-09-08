@@ -1,7 +1,8 @@
 :root{
     --btn-number-color: lightgoldenrodyellow;
     --btn-operator-color: lightgreen;
-    --btn-command-color: lightcoral;
+    --btn-command-color: lightskyblue;
+    --btn-equals-color: lightcoral;
 }
 .calculatorContainer{
     display: flex;
@@ -46,51 +47,22 @@
     height: 60%; 
     font-size: 30px;
 }
-#item1{
+/*NUMBERS*/
+.itemNumber{
     background-color: var(--btn-number-color);
 }
-#item2{
-    background-color: var(--btn-number-color);
-}
-#item3{
-    background-color: var(--btn-number-color);
-}
-#item4{
-    background-color: var(--btn-number-color);
-}
-#item5{
-    background-color: var(--btn-number-color);
-}
-#item6{
-    background-color: var(--btn-number-color);
-}
-#item7{
-    background-color: var(--btn-number-color);
-}
-#item8{
-    background-color: var(--btn-number-color);
-}
-#item9{
-    background-color: var(--btn-number-color);
-}
-#item0{
-    background-color: var(--btn-number-color);
-}
-#itemAdd{
+/*OPERATORS*/
+.itemOperator{
     background-color: var(--btn-operator-color);
 }
-#itemSubtract{
-    background-color: var(--btn-operator-color);
-}
-#itemMultiply{
-    background-color: var(--btn-operator-color);
-}
-#itemDivide{
-    background-color: var(--btn-operator-color);
-}
-#itemClear{
+/*COMMANDS*/
+.itemCommand{
     background-color: var(--btn-command-color);
 }
+/*EQUALS*/
 #itemEquals{
-    background-color: var(--btn-command-color); 
+    background-color: var(--btn-equals-color); 
+}
+#item0{
+    width: 130px;
 }

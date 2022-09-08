@@ -16,7 +16,9 @@ function divide(num1,num2){
     }
     return(num1 / num2);
 }
-
+function percentage(num1,num2){
+    return (num2 / 100) * num1;
+}
 //Function to select specific operator function
 function operate(num1, num2, operator){
     switch (operator) {
@@ -32,8 +34,11 @@ function operate(num1, num2, operator){
         case "/":
             return(divide(num1, num2));
         
+        case "%":
+            return(percentage(num1,num2))
+
         case "":
-            console.log("NO OPERATOR FOUND --------------");
+            console.log("ERROR -> NO OPERATOR FOUND --------------");
             return "You didnt enter an operator";
     }
 }
@@ -89,7 +94,7 @@ function clickAdd(){
     //If user hasnt entered any numbers, dont do anything
     if (input.innerText != "") {
         //Add associated userinput into global array
-        calculatorValues.push(parseInt(input.innerText));
+        calculatorValues.push(parseFloat(input.innerText));
         calculatorValues.push("+");
         //Update latest calculation to calculator ui
         const calculation = document.getElementById("itemInputOutputItem1");
@@ -103,7 +108,7 @@ function clickSubtract(){
     //If user hasnt entered any numbers, dont do anything
     if (input.innerText != "") {
         //Add associated userinput into global array
-        calculatorValues.push(parseInt(input.innerText));
+        calculatorValues.push(parseFloat(input.innerText));
         calculatorValues.push("-");
         //Update latest calculation to calculator ui
         const calculation = document.getElementById("itemInputOutputItem1");
@@ -117,7 +122,7 @@ function clickMultiply(){
     //If user hasnt entered any numbers, dont do anything
     if (input.innerText != "") {
         //Add associated userinput into global array
-        calculatorValues.push(parseInt(input.innerText));
+        calculatorValues.push(parseFloat(input.innerText));
         calculatorValues.push("*");
         //Update latest calculation to calculator ui
         const calculation = document.getElementById("itemInputOutputItem1");
@@ -131,7 +136,7 @@ function clickDivide(){
     //If user hasnt entered any numbers, dont do anything
     if (input.innerText != "") {
         //Add associated userinput into global array
-        calculatorValues.push(parseInt(input.innerText));
+        calculatorValues.push(parseFloat(input.innerText));
         calculatorValues.push("/");
         //Update latest calculation to calculator ui
         const calculation = document.getElementById("itemInputOutputItem1");
@@ -140,8 +145,22 @@ function clickDivide(){
         input.innerText = "";
     } 
 }
+function clickPercentage(){
+    const input = document.getElementById("itemInputOutputItem2");
+    //If user hasnt entered any numbers, dont do anything
+    if (input.innerText != "") {
+        //Add associated userinput into global array
+        calculatorValues.push(parseFloat(input.innerText));
+        calculatorValues.push("%");
+        //Update latest calculation to calculator ui
+        const calculation = document.getElementById("itemInputOutputItem1");
+        calculation.innerText += input.innerText + "%";
+        //Reset user input area for more input
+        input.innerText = "";
+    }
+}
 
-//Clear and equals functions:
+//Command functions:
 function clickClear(){
     //Reset all relevent values.
     const input = document.getElementById("itemInputOutputItem2");
@@ -150,30 +169,44 @@ function clickClear(){
     calculation.innerHTML = "";
     calculatorValues = [];
 }
+function clickDecimal(){
+    const input = document.getElementById("itemInputOutputItem2");
+    if(!input.innerText.includes('.')){
+        input.innerText += '.';
+    }
+}
+function clickPositiveNegative(){
+    const input = document.getElementById("itemInputOutputItem2");
+    if (input.innerText.includes('-')) {
+        let newInnerText = input.innerText.replace('-','');
+        input.innerText = newInnerText;
+    }
+    else{
+        input.innerText = "-" + input.innerText;
+    }
+}
+
+//EQUALS FUNCTION
 function clickEquals(){
     const input = document.getElementById("itemInputOutputItem2");
-    //If user hasnt entered any numbers, dont do anything
-    console.log("DEBUGGING");
-    
+    //If user hasnt entered any numbers, dont do anything   
     //Only execute code when calculator has values and inner text has values.
     //This stops equals sign being clicked after it has already been clicked.
     if (input.innerText != "" && calculatorValues.length !== 0) {
-             
-        console.log("####reached####")
+
         //Add associated userinput into global array
-        calculatorValues.push(parseInt(input.innerText));
+        calculatorValues.push(parseFloat(input.innerText));
         //Update latest calculation to calculator ui
         const calculation = document.getElementById("itemInputOutputItem1");
         calculation.innerText += input.innerText + "=";
         //DO THE CALCULATIONS AND SET INNER HTML
-        input.innerText = doCalculation();
-          
+        input.innerText = doCalculation();  
     }
 }
 function doCalculation(){
     let count = 0;
     let result;
-    //When calculator array === 0 -> exit loop
+    //When calculator array.length === 0 -> exit loop
     while (calculatorValues.length !== 0) {
         //The first iteration takes information from the array only, therefore we splice 3 values off.
         //The rest of the iterations will take values from the array and from result variable, therefore we splice 2 values off.

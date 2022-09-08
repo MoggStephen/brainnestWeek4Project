@@ -15,22 +15,30 @@
             <div id="itemInputOutputItem1"></div>
             <div id="itemInputOutputItem2"></div>
         </div>
-        <button class="item" id="item1" onclick="click1()">1</button>
-        <button class="item" id="item2" onclick="click2()">2</button>
-        <button class="item" id="item3" onclick="click3()">3</button>
-        <button class="item" id="itemAdd" onclick="clickAdd()">+</button>
-        <button class="item" id="item4" onclick="click4()">4</button>
-        <button class="item" id="item5" onclick="click5()">5</button>
-        <button class="item" id="item6" onclick="click6()">6</button>
-        <button class="item" id="itemSubtract" onclick="clickSubtract()">-</button>
-        <button class="item" id="item7" onclick="click7()">7</button>
-        <button class="item" id="item8" onclick="click8()">8</button>
-        <button class="item" id="item9" onclick="click9()">9</button>
-        <button class="item" id="itemMultiply" onclick="clickMultiply()">*</button>
-        <button class="item" id="itemClear" onclick="clickClear()">Clear</button>
-        <button class="item" id="item0" onclick="click0()">0</button>
-        <button class="item" id="itemEquals" onclick="clickEquals()">=</button>
-        <button class="item" id="itemDivide" onclick="clickDivide()">/</button>
+
+        <button class="item itemCommand" onclick="clickPositiveNegative()">+/-</button>
+        <button class="item itemCommand" onclick="clickClear()">Clear</button>
+        <button class="item itemOperator" onclick="clickPercentage()">%</button>
+        <button class="item itemOperator" onclick="clickDivide()">/</button>
+        
+        <button class="item itemNumber" onclick="click7()">7</button>
+        <button class="item itemNumber" onclick="click8()">8</button>
+        <button class="item itemNumber" onclick="click9()">9</button>
+        <button class="item itemOperator" onclick="clickMultiply()">*</button>
+
+        <button class="item itemNumber" onclick="click4()">4</button>
+        <button class="item itemNumber" onclick="click5()">5</button>
+        <button class="item itemNumber" onclick="click6()">6</button>
+        <button class="item itemOperator" onclick="clickSubtract()">-</button>
+        
+        <button class="item itemNumber" onclick="click1()">1</button>
+        <button class="item itemNumber" onclick="click2()">2</button>
+        <button class="item itemNumber" onclick="click3()">3</button>
+        <button class="item itemOperator" onclick="clickAdd()">+</button>
+        
+        <button class="item itemNumber" id="item0" onclick="click0()">0</button>
+        <button class="item itemNumber" onclick="clickDecimal()">.</button>
+        <button class="item" id="itemEquals" onclick="clickEquals()">=</button>  
     </div>
 </body>
 </html>
