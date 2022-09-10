@@ -11,7 +11,7 @@ function multiply(num1,num2){
 function divide(num1,num2){
     //SNARKY infinity comment!
     if (num2 == 0) {
-      alert("Infinity is that which is boundless, endless, or larger than any natural number. It is often denoted by the infinity symbol.");
+      alert("Infinity is that which is boundless, endless, or larger than any natural number. It is often denoted by the infinity symbol. &infin;");
       return "WOW INFINITY";
     }
     return(num1 / num2);
