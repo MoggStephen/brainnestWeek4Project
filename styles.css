@@ -46,6 +46,7 @@
     width: 100%;
     height: 60%; 
     font-size: 30px;
+    text-align: right;
 }
 /*NUMBERS*/
 .itemNumber{
@@ -67,6 +68,6 @@
 #item0{
     width: 130px;
 }
-.btnDisabled{
+.btnDecimalDisabled{
     background-color: rgba(250, 250, 210, 0.5);
 }

@@ -1,7 +1,7 @@
 function sort(btnText){
     const input = document.getElementById('displayInput');
     const output = document.getElementById('displayOutput');
-    let commandBtnValues = ["+/-", "Clear", "=", "."];
+    let commandBtnValues = ["+/-", "clear", "=", ".", "del"];
     let operatorBtnValues = ["%", "/", "*", "-", "+"];
     switch (btnText) {
         //Command Operations
