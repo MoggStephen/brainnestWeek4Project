@@ -48,14 +48,12 @@ let calculatorValues = [];
 //Arrays of button values for use in 
 let numberBtnValues = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 //Get specific button pressed
-//If number update display
-//If not number trigger sort to send to appropriate function
 const buttons = document.querySelectorAll('button');
 buttons.forEach((btn) => {
 
     btn.addEventListener('click', function(e) {   
-        const input = document.getElementById('displayInput');
-        console.log("DEBUG");
+        const input = document.getElementById('displayOutput');
+        //If number update display
         if (numberBtnValues.includes(btn.textContent)) {
 
             //Handling multiple 0's
@@ -63,9 +61,9 @@ buttons.forEach((btn) => {
             else{
                 input.value += btn.textContent;
                 console.log("number pressed");
-            }
-            
+            }       
         }
+        //If not number trigger sort to send to appropriate function
         else{  
             console.log("command pressed");
             sort(btn.textContent);

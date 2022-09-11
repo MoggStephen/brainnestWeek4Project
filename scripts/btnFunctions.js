@@ -6,27 +6,31 @@ function sort(btnText){
     switch (btnText) {
         //Command Operations
         case "+/-":
-            if (input.value.includes('-')) {
-                let text = input.value.replace('-','');
-                input.value = text;
+            if (output.value.includes('-')) {
+                let text = output.value.replace('-','');
+                output.value = text;
             }
             else{
-                input.value = "-" + input.value;
+                output.value = "-" + output.value;
             }
             break;
-        case "Clear":
+        case "clear":
             input.value = "";
             output.value = "";
             calculatorValues = [];
             break;
         case ".":
-            if(!input.value.includes('.')){
-                input.value += '.';
+            if(!output.value.includes('.')){
+                output.value += '.';
             }
+            break;
+        case "del":
+            let newValue = output.value.toString().slice(0,-1); 
+            output.value = newValue; 
             break;
         //Operators
         case "%":
-
+            
             break;
         case "/":
             
@@ -36,7 +40,7 @@ function sort(btnText){
             break;
         case "-":
             
-            break
+            break;
         case "+":
             
             break;
