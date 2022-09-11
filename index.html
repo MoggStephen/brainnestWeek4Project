@@ -11,37 +11,46 @@
     <title>Calculator</title>
 </head>
 <body>
-    <div class="calculatorContainer">
-        <div class="item" id="itemInputOutput">
-            <div id="itemInputOutputItem1"></div>
-            <div id="itemInputOutputItem2"></div>
-        </div>
+    <main>
+        <form class="calculatorContainer">
+            <!--DISPLAY-->
+            <fieldset class="item" id="display">
+                <output id="input"></output>
+                <input id="output"></input>
+            </fieldset>
 
-        <button class="item itemCommand" onclick="clickPositiveNegative()">+/-</button>
-        <button class="item itemCommand" onclick="clickClear()">Clear</button>
-        <button class="item itemCommand" onclick="clickBackspace()">del</button>
-        <button class="item itemOperator" onclick="clickPercentage()">%</button>
-        
-        <button class="item itemNumber" onclick="click7()">7</button>
-        <button class="item itemNumber" onclick="click8()">8</button>
-        <button class="item itemNumber" onclick="click9()">9</button>
-        <button class="item itemOperator" onclick="clickDivide()">/</button>
-        
-        <button class="item itemNumber" onclick="click4()">4</button>
-        <button class="item itemNumber" onclick="click5()">5</button>
-        <button class="item itemNumber" onclick="click6()">6</button>
-        <button class="item itemOperator" onclick="clickMultiply()">*</button>
-        
-        <button class="item itemNumber" onclick="click1()">1</button>
-        <button class="item itemNumber" onclick="click2()">2</button>
-        <button class="item itemNumber" onclick="click3()">3</button>
-        <button class="item itemOperator" onclick="clickSubtract()">-</button>
-        
-        <button class="item itemNumber" id="item0" onclick="click0()">0</button>
-        <button class="item itemNumber" id="itemDecimal"onclick="clickDecimal()">.</button>
-        <button class="item itemOperator" onclick="clickAdd()">+</button>
+            <!--ROW1-->
+            <button type="button" class="item itemCommand">+/-</button>
+            <button type="button" class="item itemCommand">Clear</button>
+            <button type="button" class="item itemCommand">del</button>
+            <button type="button" class="item itemOperator">%</button>
+            
+            <!--ROW2-->
+            <button type="button" class="item itemNumber">7</button>
+            <button type="button" class="item itemNumber">8</button>
+            <button type="button" class="item itemNumber">9</button>
+            <button type="button" class="item itemOperator">/</button>
+            
+            <!--ROW3-->
+            <button type="button" class="item itemNumber">4</button>
+            <button type="button" class="item itemNumber">5</button>
+            <button type="button" class="item itemNumber">6</button>
+            <button type="button" class="item itemOperator">*</button>
+            
+            <!--ROW4-->
+            <button type="button" class="item itemNumber">1</button>
+            <button type="button" class="item itemNumber">2</button>
+            <button type="button" class="item itemNumber">3</button>
+            <button type="button" class="item itemOperator">-</button>
+            
+            <!--ROW5-->
+            <button type="button" class="item itemNumber" id="item0">0</button>
+            <button type="button" class="item itemNumber">.</button>
+            <button type="button" class="item itemOperator">+</button>
 
-        <button class="item" id="itemEquals" onclick="clickEquals()">=</button>  
-    </div>
+            <!--ROW6-->
+            <button type="button" class="item" id="itemEquals">=</button>  
+        </form>
+    </main>
 </body>
 </html>
