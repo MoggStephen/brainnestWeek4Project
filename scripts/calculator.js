@@ -46,13 +46,16 @@ function operate(num1, num2, operator){
 //Global array to hold order of user input
 let calculatorValues = [];
 //Arrays of button values for use in 
-let numberBtnValues = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+const numberBtnValues = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+const commandBtnValues = ["+/-", "clear", "=", ".", "del"];
+const operatorBtnValues = ["%", "/", "*", "-", "+"];
 //Get specific button pressed
 const buttons = document.querySelectorAll('button');
 buttons.forEach((btn) => {
 
     btn.addEventListener('click', function(e) {   
         const input = document.getElementById('displayOutput');
+
         //If number update display
         if (numberBtnValues.includes(btn.textContent)) {
 
@@ -63,10 +66,17 @@ buttons.forEach((btn) => {
                 console.log("number pressed");
             }       
         }
-        //If not number trigger sort to send to appropriate function
+        //If command button send to command sort
+        else if (commandBtnValues.includes(btn.textContent)) {
+            commandSort(btn.textContent);
+        }
+        //If operator button send to operator sort
+        else if (operatorBtnValues.includes(btn.textContent)){
+            operatorSort(btn.textContent);
+        }
+        //button not found within arrays
         else{  
-            console.log("command pressed");
-            sort(btn.textContent);
+            console.log(`ERROR -> Button not found! ${btn.textContent}`);
         }
     })
 })

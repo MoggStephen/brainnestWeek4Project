@@ -1,10 +1,7 @@
-function sort(btnText){
+function commandSort(btnText){
     const input = document.getElementById('displayInput');
     const output = document.getElementById('displayOutput');
-    let commandBtnValues = ["+/-", "clear", "=", ".", "del"];
-    let operatorBtnValues = ["%", "/", "*", "-", "+"];
     switch (btnText) {
-        //Command Operations
         case "+/-":
             if (output.value.includes('-')) {
                 let text = output.value.replace('-','');
@@ -25,31 +22,38 @@ function sort(btnText){
             }
             break;
         case "del":
-            let newValue = output.value.toString().slice(0,-1); 
+            let newValue = output.value.slice(0,-1); 
             output.value = newValue; 
             break;
-        //Operators
-        case "%":
-            
-            break;
-        case "/":
-            
-            break;
-        case "*":
-            
-            break;
-        case "-":
-            
-            break;
-        case "+":
-            
-            break;
-        //Equals
-        case "equals":
-            
-            break; 
+
         default:
-            console.log(`ERROR -> btn not found! ${btnText}`)
+            console.log(`ERROR -> command button not found! ${btnText}`)
             break;
+    }
+}
+function operatorSort(btnText){
+    const input = document.getElementById('displayInput');
+    const output = document.getElementById('displayOutput');
+
+    //Firstly find out if an operator is already in output.value;
+    let result = false;
+    operatorBtnValues.forEach(operator => {
+        if (output.value.includes(operator)) {
+            result = true;
+        }
+    });
+
+    //Next either replace or add the operator to output.value
+    if (result = true) {
+        console.log("replace");
+        let newValue = output.value.slice(0,-1);
+        output.value = newValue += btnText;
+    }  
+    else if(result = false){
+        console.log("add")
+        output.value += btnText;
+    }
+    else{
+        console.log("ERROR -> Something went wrong in operator sort")
     }
 }
