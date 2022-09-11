@@ -36,20 +36,20 @@ function operatorSort(btnText){
     const output = document.getElementById('displayOutput');
 
     //Firstly find out if an operator is already in output.value;
-    let result = false;
+    let containsOperator = false;
     operatorBtnValues.forEach(operator => {
         if (output.value.includes(operator)) {
-            result = true;
+            containsOperator = true;
         }
     });
 
     //Next either replace or add the operator to output.value
-    if (result = true) {
+    if (containsOperator = true) {
         console.log("replace");
         let newValue = output.value.slice(0,-1);
         output.value = newValue += btnText;
     }  
-    else if(result = false){
+    else if(containsOperator = false){
         console.log("add")
         output.value += btnText;
     }
