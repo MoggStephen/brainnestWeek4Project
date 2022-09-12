@@ -57,14 +57,20 @@ buttons.forEach((btn) => {
         const input = document.getElementById('displayOutput');
 
         //If number update display
-        if (numberBtnValues.includes(btn.textContent)) {
-
-            //Handling multiple 0's
-            if (btn.textContent === "0" && input.value.includes("0")) {}
+        if (numberBtnValues.includes(btn.textContent)) {                
+            //logic to stop the user from entering 0's at the start. 
+            if(btn.textContent == "0"){
+                let allZero = allZeros(input.value);
+                console.log(allZero + " " + input.value);
+                if (input.value == "" || allZero == false) {
+                    input.value += btn.textContent;
+                    console.log("number pressed"); 
+                }
+            }
             else{
                 input.value += btn.textContent;
-                console.log("number pressed");
-            }       
+                console.log("number pressed"); 
+            }    
         }
         //If command button send to command sort
         else if (commandBtnValues.includes(btn.textContent)) {
@@ -99,4 +105,14 @@ function doCalculation(){
         }
     }
     return(result);
+}
+
+function allZeros(string)
+{   
+    for (let i = 0; i < string.length; i++) {
+        if(string.charAt(i) !== "0"){   
+            return false;      
+        }
+    }
+    return true;
 }
