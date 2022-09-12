@@ -73,7 +73,7 @@ buttons.forEach((btn) => {
             }    
         }
         //If command button send to command sort
-        else if (commandBtnValues.includes(btn.textContent)) {
+        else if (commandBtnValues.includes(btn.textContent)){
             commandSort(btn.textContent);
         }
         //If operator button send to operator sort
