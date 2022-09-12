@@ -25,9 +25,6 @@ function commandSort(btnText){
             let newValue = output.value.slice(0,-1); 
             output.value = newValue; 
             break;
-        case "=":
-
-            break;
         default:
             console.log(`ERROR -> command button not found! ${btnText}`)
             break;
@@ -39,7 +36,9 @@ function operatorSort(btnText){
 
     //If input.value is empty simply add to input.value
     if(input.value == ""){
-        input.value += output.value + btnText;
+        let newValue = output.value + btnText;
+        input.value += newValue;
+        addCalculation(newValue);
         output.value = "";
     }
     //if input.value isnt empty
@@ -51,11 +50,47 @@ function operatorSort(btnText){
         }
         //if output.value isnt empty add output.value
         else if(output.value != ""){
-            input.value = input.value + output.value + btnText
+            let newValue = output.value + btnText;
+            input.value = input.value + newValue;
+            addCalculation(newValue);
             output.value = "";
         }
     }
     else{
         console.log("ERROR -> Something went wrong in operator sort")
     }
+}
+
+function addCalculation(value){
+    const operatorOrEqualsBtnValues = ["%", "/", "*", "-", "+", "="];
+    
+    let number = "";
+    for (let i = 0; i < value.length; i++) {
+        console.log("iteration" + i)
+        console.log(value);
+        //When i isnt 0 and the character is a dash. The dash is an operator!!!
+        if(value.charAt(i) == "-" && i == 0){
+            number += value.charAt(i);     
+            console.log("value(i) is a dash")       
+        } 
+        else{
+            console.log("no dash at the start") 
+            operatorOrEqualsBtnValues.forEach(operator => {
+    
+                if (value.charAt(i) == operator) {
+                    calculatorValues.push({
+                        type: "number",
+                        value: number
+                    })
+                    calculatorValues.push({
+                        type: "operator",
+                        value: value.charAt(i)
+                    })                   
+                }               
+            });
+            number += value.charAt(i);
+            console.log(number)   
+        }
+    }
+    console.log(calculatorValues);
 }
