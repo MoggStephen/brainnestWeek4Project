@@ -59,7 +59,6 @@ function operatorSort(btnText){
     else{
         console.log("ERROR -> Something went wrong in operator sort")
     }
-    console.log(calculatorValues)
 }
 
 function addCalculation(value){

@@ -19,12 +19,10 @@ buttons.forEach((btn) => {
                 let allZero = allZeros(input.value);
                 if (input.value == "" || allZero == false) {
                     input.value += btn.textContent;
-                    console.log("number pressed"); 
                 }
             }
             else{
-                input.value += btn.textContent;
-                console.log("number pressed"); 
+                input.value += btn.textContent; 
             }    
         }
         //If command button send to command sort
