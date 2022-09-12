@@ -83,9 +83,9 @@ function doCalculations(){
     })
     console.log(calculatorValues);
     //IMPORTANT JAVASCRIPT ROUNDING ERRORS HANDLED HERE
-    //SEEMS TO BE .tofixed(14).toString() then parseFloat that works
+    //SEEMS TO BE .tofixed(12).toString() then parseFloat that works
     //CORRECTION FACTOR ALSO USED IN MULTIPLY AND DIVIDE FUNCTIONS!
-    let string = calculatorValues[0].value.toFixed(14).toString();
+    let string = calculatorValues[0].value.toFixed(12).toString();
     input.value += parseFloat(string);
     output.value += parseFloat(string);
     calculatorValues = [];
