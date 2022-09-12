@@ -81,15 +81,21 @@ function doCalculations(){
             } 
         }
     })
-    console.log(calculatorValues);
-    //IMPORTANT JAVASCRIPT ROUNDING ERRORS HANDLED HERE
-    //SEEMS TO BE .tofixed(12).toString() then parseFloat that works
-    //CORRECTION FACTOR ALSO USED IN MULTIPLY AND DIVIDE FUNCTIONS!
-    let string = calculatorValues[0].value.toFixed(12).toString();
-    input.value += parseFloat(string);
-    output.value += parseFloat(string);
-    calculatorValues = [];
-
+    
+    let result = calculatorValues[0].value;
+    if(typeof(result) == "string"){
+        input.value += result;
+        calculatorValues = [];
+    }
+    else if(typeof(result == "int")){
+        //IMPORTANT JAVASCRIPT ROUNDING ERRORS HANDLED HERE
+        //SEEMS TO BE .tofixed(12).toString() then parseFloat that works
+        //CORRECTION FACTOR ALSO USED IN MULTIPLY AND DIVIDE FUNCTIONS!
+        let numberResult = parseFloat(result.toFixed(12).toString());
+        input.value += numberResult;
+        output.value += numberResult;
+        calculatorValues = [];
+    }
 }
 
 
