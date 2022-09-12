@@ -66,15 +66,11 @@ function addCalculation(value){
     
     let number = "";
     for (let i = 0; i < value.length; i++) {
-        console.log("iteration" + i)
-        console.log(value);
         //When i isnt 0 and the character is a dash. The dash is an operator!!!
         if(value.charAt(i) == "-" && i == 0){
-            number += value.charAt(i);     
-            console.log("value(i) is a dash")       
+            number += value.charAt(i);          
         } 
         else{
-            console.log("no dash at the start") 
             operatorOrEqualsBtnValues.forEach(operator => {
     
                 if (value.charAt(i) == operator) {
@@ -88,9 +84,7 @@ function addCalculation(value){
                     })                   
                 }               
             });
-            number += value.charAt(i);
-            console.log(number)   
+            number += value.charAt(i); 
         }
     }
-    console.log(calculatorValues);
 }
